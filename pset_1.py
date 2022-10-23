@@ -2,8 +2,11 @@
 def pset_101():
     weight = float(input('What is your weight in kg?'))
     height = float(input('What is your height in m?'))
+   
     bmi = weight/(height*height)
+    
     print('Your BMI is', round(bmi,2))
+    
     if (bmi < 18 or bmi > 25):
         print("Good nutrition is important")
     else:
@@ -18,41 +21,113 @@ def test_101():
 #Calculates value of f(x) = x^2 + 5x - 4
 def pset_102():
     x = int(input("Enter the value of x: "))
+    
     funcOfx = x ** 2 + 5 * x - 4
+    
     print("The value of f(x) is",funcOfx)
 
 #Calculates value of geometric series
 def pset_103():
-    a = int(input("Enter the value of a: "))
-    r = 1
-    n = 1 
-    sum = a + r + n
-    print("The sum is",sum)
+    a = 1.5
+    r = 3
+    n = 5
+    
+    numerator = a * (1 - r ** n)
+    denominator = 1 - r
+    
+    result = numerator/denominator
+    
+    print("The sum is",result)
 
+#Display an address in Singapore format
+def pset_104():
+    addressee = "Singapore Post Pte Ltd"
+    houseNumber = "10"
+    roadName = "Eunos Road 8"
+    unitNumber = "# 05-33"
+    buildingName = "Singapore Post Centre"
+    postalCode = "408600"
 
-# def pset_104():
+    firstLine = addressee
+    secondLine = houseNumber + " " + roadName
+    thirdLine = unitNumber + " " + buildingName
+    fourthLine = "Singapore " + postalCode
+    
+    print(firstLine,secondLine,thirdLine,fourthLine, sep='\n')
 
+#Calculates interest tax, 5% payable on additional income above 20000
+def pset_105():
+    income = 19000
+    
+    if(income > 20000):
+        tax = round(0.05 * (income - 20000),2)
+        print("The tax payable on an income of",income,"is",tax,"dollars.")
+    else:
+        print("No tax payable.")
 
-# def pset_105():
+def pset_106():
+    for i in range(5):
+        x = 1 + 2 * i
+        print("green bottle",x)
 
+#Display every term of a sequence
+def pset_107():
+    number_of_terms = 10
+    for n in range(number_of_terms):
+        numerator = n ** 3 + 3 * n + 5
+        denominator = n ** 2 + 1
 
-# def pset_106():
+        result = numerator / denominator
+        
+        print("n =",str(n) + ":",round(result,3))
 
+#Calculate sum using for loop 
+def pset_108():
+    n = 10
+    total = 0  # see note below
+    for i in range(n):
+        total += i + 1
 
-# def pset_107():
+    print("The sum is",total)
 
+#Sum up terms of pset_107
+def pset_109():
+    number_of_terms = 10
+    total = 0
+    
+    for n in range(number_of_terms):
+        numerator = n ** 3 + 3 * n + 5
+        denominator = n ** 2 + 1
+        
+        total += numerator / denominator
 
-# def pset_108():
+    print("The sum is",total)
 
+#Swap variable values
+def pset_110():
+    a = 10
+    b = "apple"
 
-# def pset_109():
+    new_a = b
+    new_b = a
+    a = new_a
+    b = new_b
 
+    print(a,b) 
 
-# def pset_110():
+#Outputs different strings based on bmi calculation.
+def pset_111():
+    height = 1.70
+    weight = 69.0
+   
+    bmi = weight/(height*height)
 
-
-# def pset_111():
-
+    if(bmi >= 27.5):
+        print("High Risk")
+    elif(bmi >=23.0):
+        print("Moderate Risk")
+    else:
+        print("Low Risk")       
 
 # def pset_112():
 
@@ -64,17 +139,17 @@ def pset_103():
 pset_dict = {
     "101": pset_101,
     "102": pset_102,
-    "103": pset_103
-    # "104": pset_104,
-    # "105": pset_105,
-    # "106": pset_106,
-    # "107": pset_107,
-    # "108": pset_108,
-    # "109": pset_109,
-    # "110": pset_110,
-    # "111": pset_111,
+    "103": pset_103,
+    "104": pset_104,
+    "105": pset_105,
+    "106": pset_106,
+    "107": pset_107,
+    "108": pset_108,
+    "109": pset_109,
+    "110": pset_110,
+    "111": pset_111
     # "112": pset_112,
-    # "113": pset_113,
+    # "113": pset_113
 }
 
 test_dict = {
@@ -115,7 +190,7 @@ def test_pset():
         print("Invalid pset number entered.")
 
 def run_program():
-    choice = input("Enter run to manually test a pset.\nEnter test to automatically test a pset.\nSelection: ")
+    choice = input("\nEnter run to manually test a pset.\nEnter test to automatically test a pset.\nSelection: ")
     if (choice == "run"):
         run_pset()
     elif (choice =="test"):
