@@ -1,8 +1,4 @@
-#declare dictionary, key-value pair
-# key: qn number
-# value: function name without string
-#https://www.geeksforgeeks.org/python-store-function-as-dictionary-value/
-
+#Calculates BMI given weight and height
 def pset_101():
     weight = float(input('What is your weight in kg?'))
     height = float(input('What is your height in m?'))
@@ -14,16 +10,24 @@ def pset_101():
         print("Congratulations, Don't forget to exercise regularly")
 
 def test_101():
-    print("This is a test for pset 101")
-    print("Demo:")
+    print("Demo of test cases:")
     print("Test case 1: Success")
     print("Test case 2: Failure")
     print("Test case 3: Success")
 
-# def pset_102():
+#Calculates value of f(x) = x^2 + 5x - 4
+def pset_102():
+    x = int(input("Enter the value of x: "))
+    funcOfx = x ** 2 + 5 * x - 4
+    print("The value of f(x) is",funcOfx)
 
-
-# def pset_103():
+#Calculates value of geometric series
+def pset_103():
+    a = int(input("Enter the value of a: "))
+    r = 1
+    n = 1 
+    sum = a + r + n
+    print("The sum is",sum)
 
 
 # def pset_104():
@@ -58,9 +62,9 @@ def test_101():
 #Save functions as dict values
 #https://stackoverflow.com/questions/9205081/is-there-a-way-to-store-a-function-in-a-list-or-dictionary-so-that-when-the-inde
 pset_dict = {
-    "101": pset_101
-    # "102": pset_102,
-    # "103": pset_103,
+    "101": pset_101,
+    "102": pset_102,
+    "103": pset_103
     # "104": pset_104,
     # "105": pset_105,
     # "106": pset_106,
@@ -92,24 +96,26 @@ test_dict = {
 #User can choose the specific function to run
 #https://stackoverflow.com/questions/9205081/is-there-a-way-to-store-a-function-in-a-list-or-dictionary-so-that-when-the-inde
 def run_pset():
-    num = input("Which pset do you want to run?")
+    num = input("Which pset do you want to run?: ")
     if (True):
-        print("You have selected pset" + num)
+        print("Running pset",num,"...\n...\n...")
         pset_dict[num]()
     else:
         print("Invalid pset number entered.")
 
 #User can choose the specific function to test
 def test_pset():
-    num = input("Which pset do you want to test?")
+    num = input("Which pset do you want to test?: ")
     if (True):
-        print("You have selected pset" + num,"\n"+"Pset",num,"Test results:")
-        pset_dict[num]()
+        print("Testing pset",num,"...\n...\n...")
+        print("Pset",num,"Test results:")
+        test_101()
+        #test_dict[num]()
     else:
         print("Invalid pset number entered.")
 
 def run_program():
-    choice = input("Enter run to manually test a pset.\nEnter test to automatically test a pset.\nSelection:")
+    choice = input("Enter run to manually test a pset.\nEnter test to automatically test a pset.\nSelection: ")
     if (choice == "run"):
         run_pset()
     elif (choice =="test"):
