@@ -22,9 +22,9 @@ def test_101():
 def pset_102():
     x = int(input("Enter the value of x: "))
     
-    funcOfx = x ** 2 + 5 * x - 4
+    func_of_x = x ** 2 + 5 * x - 4
     
-    print("The value of f(x) is",funcOfx)
+    print("The value of f(x) is",func_of_x)
 
 #Calculates value of geometric series
 def pset_103():
@@ -42,18 +42,18 @@ def pset_103():
 #Display an address in Singapore format
 def pset_104():
     addressee = "Singapore Post Pte Ltd"
-    houseNumber = "10"
-    roadName = "Eunos Road 8"
-    unitNumber = "# 05-33"
-    buildingName = "Singapore Post Centre"
-    postalCode = "408600"
+    house_number = "10"
+    road_name = "Eunos Road 8"
+    unit_number = "# 05-33"
+    building_name = "Singapore Post Centre"
+    postal_code = "408600"
 
-    firstLine = addressee
-    secondLine = houseNumber + " " + roadName
-    thirdLine = unitNumber + " " + buildingName
-    fourthLine = "Singapore " + postalCode
+    first_line = addressee
+    second_line = house_number + " " + road_name
+    third_line = unit_number + " " + building_name
+    fourth_line = "Singapore " + postal_code
     
-    print(firstLine,secondLine,thirdLine,fourthLine, sep='\n')
+    print(first_line,second_line,third_line,fourth_line, sep='\n')
 
 #Calculates interest tax, 5% payable on additional income above 20000
 def pset_105():
@@ -129,7 +129,29 @@ def pset_111():
     else:
         print("Low Risk")       
 
-# def pset_112():
+#Draw polygon of n sides using turtle.
+#Set line thickness and color
+#Fills polygon with color 
+def pset_112():
+    import turtle  
+
+    t = turtle.Turtle()
+    # Inputs 
+    n_sides = 5
+    length = 72
+    angle = 360 / n_sides
+
+    # Process 
+    width = 4
+    color = "red"
+    t.width(10)
+    t.pencolor(color)
+    for i in range(n_sides):
+        t.forward(length)   
+        t.right(angle)
+
+    # Output
+    turtle.done() 
 
 
 # def pset_113():
@@ -147,9 +169,8 @@ pset_dict = {
     "108": pset_108,
     "109": pset_109,
     "110": pset_110,
-    "111": pset_111
-    # "112": pset_112,
-    # "113": pset_113
+    "111": pset_111,
+    "112": pset_112
 }
 
 test_dict = {
@@ -165,14 +186,13 @@ test_dict = {
     # "110": test_110,
     # "111": test_111,
     # "112": test_112,
-    # "113": test_113,
 }
 
 #User can choose the specific function to run
 #https://stackoverflow.com/questions/9205081/is-there-a-way-to-store-a-function-in-a-list-or-dictionary-so-that-when-the-inde
 def run_pset():
     num = input("Which pset do you want to run?: ")
-    if (True):
+    if(True):
         print("Running pset",num,"...\n...\n...")
         pset_dict[num]()
     else:
@@ -181,7 +201,7 @@ def run_pset():
 #User can choose the specific function to test
 def test_pset():
     num = input("Which pset do you want to test?: ")
-    if (True):
+    if(True):
         print("Testing pset",num,"...\n...\n...")
         print("Pset",num,"Test results:")
         test_101()
@@ -193,10 +213,10 @@ def run_program():
     choice = input("\nEnter run to manually test a pset.\nEnter test to automatically test a pset.\nSelection: ")
     if (choice == "run"):
         run_pset()
-    elif (choice =="test"):
+    elif (choice == "test"):
         test_pset()
     else: 
         print("Invalid input. Please try again.")
         run_program()    
-
+    
 run_program()
