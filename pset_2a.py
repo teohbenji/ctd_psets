@@ -1,77 +1,88 @@
-def pset_101():
+import unittest
+
+def calculate_bmi(weight, height):
+    height = height / 100
+
+    bmi = round(weight /(height * height), 1)
+    
+    return bmi
+
+def test_201():
+    print(calculate_bmi(2.5, 50))
+    print(calculate_bmi(50, 150))
+    print(calculate_bmi(43.5, 142.3))
+
+def position_velocity(vo, t):
     pass
 
-def test_101():
+def test_202():
     pass
 
-def pset_102():
+def decay(a, t):
     pass
 
-def test_102():
+def test_203():
     pass
 
-def pset_103():
+def describe_bmi(bmi):
     pass
 
-def test_103():
+def test_204():
     pass
 
-def pset_104():
+def is_positive_even(n):
     pass
 
-def test_104():
+def test_205():
     pass
 
-def pset_105():
+def letter_grade(mark):
     pass
 
-def test_105():
+def test_206():
     pass
 
-pset_dict = {
-    "101": pset_101,
-    "102": pset_102,
-    "103": pset_103,
-    "104": pset_104,
-    "105": pset_105,
-}
+def largest_area(s, u, v):
+    pass
+
+def test_207():
+    pass
 
 test_dict = {
-    "101": test_101,
-    "102": test_102,
-    "103": test_103,
-    "104": test_104,
-    "105": test_105,
+    "201": test_201,
+    "202": test_202,
+    "203": test_203,
+    "204": test_204,
+    "205": test_205,
+    "206": test_206,
+    "207": test_207
 }
 
-#User can choose a specific function to run
-def run_pset():
-    num = input("Which example do you want to run?: ")
-    if(num in pset_dict):
-        print("Running example",num,"...\n...\n...")
-        pset_dict[num]()
-    else:
-        print("Invalid pset number entered.")
-        run_pset()
+pset_dict = {
+    "201": calculate_bmi,
+    "202": position_velocity,
+    "203": decay,
+    "204": describe_bmi,
+    "205": is_positive_even,
+    "206": letter_grade,
+    "207": largest_area
+}
 
 #User can choose a specific function to test
-def test_pset():
-    num = input("Which pset do you want to test?: ")
+def run_program():
+    #print out table showing pset numbers and the pset name
+    print("Num:    Name:")
+    for pset_num in pset_dict:
+        print("{:8}{}".format(pset_num, pset_dict[pset_num].__name__))
+        pass 
+    
+    num = input("\nWhich pset do you want to test?: ")
+    
     if(num in test_dict):
-        print("Testing pset",num,"...\n...\n...")
-        print("Pset",num,"Test results:")
+        print("Running tests for pset {}\n...\n...".format(num))
+        print("Pset num test results:".format(num))
         test_dict[num]()
     else:
         print("Invalid pset number entered.")
-
-def run_program():
-    choice = input("\nEnter run to manually test a pset.\nEnter test to automatically test a pset.\nSelection: ")
-    if (choice == "run"):
-        run_pset()
-    elif (choice == "test"):
-        test_pset()
-    else: 
-        print("Invalid input. Please try again.")
-        run_program()    
     
 run_program()
