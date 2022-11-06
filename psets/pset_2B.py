@@ -6,10 +6,10 @@ def compound_interest(amount, rate, periods, time):
     return round(future_value, 3) 
 
 def area_vol_cylinder(radius, length):
-    area = round(math.pi * pow(radius, 2), 2)
-    volume = round(area * length, 2)
+    area = math.pi * pow(radius, 2)
+    volume = area * length
 
-    return area, volume
+    return round(area, 2), round(volume, 2)
 
 def seconds_to_hours(seconds):
     SECONDS_PER_HOUR = 3600
