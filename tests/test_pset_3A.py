@@ -27,13 +27,11 @@ class TestPset3A(unittest.TestCase):
         self.assertEqual(pset_3A.sum_of_series(1), 1, "Should be 1")    
         self.assertEqual(pset_3A.sum_of_series(10), 1.5497677311665408, "Should be 1.5497677311665408")    
 
-    #TODO:
     def test_fraction_of_pisq(self):    
-        self.assertEqual(pset_3A.fraction_of_pisq())
+        self.assertEqual(pset_3A.fraction_of_pisq(1.5), 0.91189065278104, "Should be 0.91189065278104")
 
-    #TODO:
     def test_terms_required(self):
-        pass
+        self.assertEqual(pset_3A.terms_required(0.9), 6, "Should be 6")
 
     def test_is_prime(self):
         self.assertTrue(pset_3A.is_prime(23), "Should be True")
