@@ -32,6 +32,23 @@ class TestPset5A(unittest.TestCase):
         self.assertEqual(pset_5A.diff({2: 3, 1: 2, 0: 1}), {1: 6, 0: 2}, "Derivative should be 6x + 2")
         self.assertEqual(pset_5A.diff({-3: -2, -2: -1, -1: 3}), {-4: 6, -3: 2, -2: -3}, "Derivative should be 6x^-4 + 2x^-3 - 3x^-2")
 
+    def test_read_list(self):
+        self.assertEqual(pset_5A.read_list([{'reg': '1234A', 'make':'Caelum', 'price': 24999}, {'reg': '888B', 'make':'Noctis', 'price': 12499}, 
+  {'reg': '365K', 'make':'Cloud', 'price': 7499},{'reg': '1043W', 'price': 2499}, {'reg': '7422M', 'make': 'Lucis'}], "1234A", "make"), "Caelum", "Make of 1234A is Caelum")
+        self.assertEqual(pset_5A.read_list([{'reg': '1234A', 'make':'Caelum', 'price': 24999}, {'reg': '888B', 'make':'Noctis', 'price': 12499}, 
+  {'reg': '365K', 'make':'Cloud', 'price': 7499},{'reg': '1043W', 'price': 2499}, {'reg': '7422M', 'make': 'Lucis'}], "365K", "price"), 7499, "Price of 365K is 7499")
+        self.assertIsNone(pset_5A.read_list([{'reg': '1234A', 'make':'Caelum', 'price': 24999}, {'reg': '888B', 'make':'Noctis', 'price': 12499}, 
+  {'reg': '365K', 'make':'Cloud', 'price': 7499},{'reg': '1043W', 'price': 2499}, {'reg': '7422M', 'make': 'Lucis'}], "1043W", "make"), "1043W has no make")
+        self.assertIsNone(pset_5A.read_list([{'reg': '1234A', 'make':'Caelum', 'price': 24999}, {'reg': '888B', 'make':'Noctis', 'price': 12499}, 
+  {'reg': '365K', 'make':'Cloud', 'price': 7499},{'reg': '1043W', 'price': 2499}, {'reg': '7422M', 'make': 'Lucis'}], "7422M", "price"), "7422M has no price")
+        self.assertIsNone(pset_5A.read_list([{'reg': '1234A', 'make':'Caelum', 'price': 24999}, {'reg': '888B', 'make':'Noctis', 'price': 12499}, 
+  {'reg': '365K', 'make':'Cloud', 'price': 7499},{'reg': '1043W', 'price': 2499}, {'reg': '7422M', 'make': 'Lucis'}], "987A", "price"), "987A is not a reg_no")
+
+    def test_get_highest_value(self):
+        self.assertEqual(pset_5A.get_highest_value({'a': 123}), ('a', 123), "Highest kv pair is ('a', 123)")
+        self.assertEqual(pset_5A.get_highest_value({'a': 123, 'b': 132, 'c': 95}), ('b', 132), "Highest kv pair is ('b', 132)")
+        self.assertEqual(pset_5A.get_highest_value({'a': 200, 'b': 132, 'c': 95}), ('a', 200), "Highest kv pair is ('a', 200)")
+        self.assertEqual(pset_5A.get_highest_value({'a': 200, 'b': 132, 'c': 295}), ('c', 295), "Highest kv pair is ('c', 295)")
 
 if __name__ == '__main__':
     unittest.main()
