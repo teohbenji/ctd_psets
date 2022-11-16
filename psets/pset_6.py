@@ -63,4 +63,27 @@ def find_average_of_lists(ls):
 
     return averages, average
 
+def get_zero_matrix(m, n):
+    zero_matrix = []
+    for i in range(m):
+        zero_matrix.append([0] * n)
+
+    return zero_matrix
+            
+def transpose_matrix(ls):
+    #Transposed rows = No. of columns, or no. of list elements
+    #Transposed columns = No. of rows, or no. of elements in each list element
     
+    transposed_rows = len(ls[0])
+    transposed_columns = len(ls)
+    
+    transposed_matrix = get_zero_matrix(transposed_rows, transposed_columns)
+
+    for i in range(transposed_rows):
+        for j in range(transposed_columns):
+            transposed_matrix[i][j] = ls[j][i]
+    
+    return transposed_matrix
+
+def process_scores(f):
+    pass
