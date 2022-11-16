@@ -33,7 +33,7 @@ def get_base_counts(dna):
 
     for c in dna:
         if(c in dd):
-            dd[c] = dd[c] + 1
+            dd[c] += 1
         else:
             return "The input DNA string is invalid"
     
@@ -43,7 +43,7 @@ def evaluate_polynomial(dd, x):
     y = 0
 
     for exponent, value in dd.items(): 
-        y = y + value * x ** exponent
+        y += value * x ** exponent
     
     return round(y, 2)
 

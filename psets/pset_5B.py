@@ -1,6 +1,6 @@
 def increase_value(sample_dict, key):
     if (key in sample_dict):
-        sample_dict[key] = sample_dict[key] + 1
+        sample_dict[key] += 1
     
     return sample_dict
 

@@ -1,5 +1,5 @@
 def calculate_bmi(weight, height):
-    height = height / 100
+    height /= 100
 
     bmi = round(weight /(height * height), 1)
     
@@ -25,7 +25,7 @@ def reverse(s):
     reversed_string = ""
     #Access s from the right, using negative indexes
     for i in range(0, len(s)):
-        reversed_string = reversed_string + str(s[-(i + 1)]) 
+        reversed_string += str(s[-(i + 1)]) 
 
     return reversed_string
 
