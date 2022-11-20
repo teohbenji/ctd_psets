@@ -1,15 +1,19 @@
+import copy
+
 def get_average_sublist(ls, n): 
     #Executes code if index exists. Otherwise, return None
-    if(n < len(ls)):
+    is_index_in_list = n < len(ls)
+
+    if(is_index_in_list):
         sum = 0
 
         for i in range(len(ls[n])):
-            sum = sum + ls[n][i]
-
-        average = round(sum / len(ls[n]), 1)
+            sum += ls[n][i]
     
     else:
         return None
+
+    average = round(sum / len(ls[n]), 1)
 
     return average
 
@@ -85,5 +89,82 @@ def transpose_matrix(ls):
     
     return transposed_matrix
 
+#Process scores from scores.txt document
 def process_scores(f):
-    pass
+    #Returns list of scores only, without whitespaces
+    scores_list = f.read().split()
+    sum = 0
+
+    for score in scores_list:
+        sum += int(score)
+    
+    rounded_average = round(sum / len(scores_list), 1)
+    
+    return sum, rounded_average
+
+def read_fdi(f):
+    row_list = f.readlines()
+    row_dict = {}
+
+    # Ignore first row which doesn't contain value
+    for i in range(1, len(row_list)):
+        row = row_list[i].split(",")
+        year = row[0]
+        value = row[2].replace("\n", "") #Remove newline character from string
+        
+        row_dict[year] = float(value)
+
+    return row_dict
+
+def gc_content(f):
+    bases_to_check = 'CG'
+    dna_string = f.read().replace("\n", "")
+    gc_occurences = 0
+
+    for char in dna_string:
+        #Checks if character is g or c base
+        isGCbase = char in bases_to_check
+        
+        if isGCbase:
+            gc_occurences += 1
+
+    gc_percentage = gc_occurences / len(dna_string) * 100
+
+    return round(gc_percentage, 1)
+    
+def scalar_multiply(ls, scalar):
+    """
+    Returns the result of matrix multiplication
+
+    Parameters:
+        ls (list): A list containing matrix values
+        scalar (int): An integer to multiply ls
+    
+    Returns:
+        ls (list): A list containing matrix values that has been multiplied
+    """
+    for i in range(len(ls)):
+        for j in range(len(ls[i])):
+            ls[i][j] = ls[i][j] * scalar
+    
+    return ls
+
+def scalar_multiply_new(ls, scalar):
+    """
+    Returns a deepcopy of a list that has been multiplied
+
+    Parameters:
+        ls (list): A list containing matrix values
+        scalar (int): An integer to multiply ls
+    
+    Returns:
+        ls_new (list): A list containing matrix values that has been multiplied
+    """
+    ls_new = copy.deepcopy(ls)
+    
+    for i in range(len(ls_new)):
+        for j in range(len(ls_new[i])):
+            ls_new[i][j] = ls_new[i][j] * scalar
+    
+    return ls_new
+

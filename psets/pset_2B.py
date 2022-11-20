@@ -26,7 +26,7 @@ def fahrenheit_to_celsius(f):
 
     if (c < -273.15):
         return None
-    else:
-        return c
+
+    return c
 
 
